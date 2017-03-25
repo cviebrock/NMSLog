@@ -68,14 +68,15 @@ $alert-border-radius: 0;
     }
 }
 
-$color-star-o: blue;
-$color-star-b: 'blue-white';
-$color-star-a: 'white';
-$color-star-f: 'yellow-white';
-$color-star-g: 'yellow';
-$color-star-k: 'orange';
-$color-star-m: 'red';
-$color-star-l: 'red-brown';
-$color-star-t: 'brown';
-$color-star-y: 'dark-brown';
-$color-star-e: 'green';
+// http://stackoverflow.com/a/22630970/1327340 with lots of adjustment
+$color-star-o: #6685FF;  // blue
+$color-star-b: #B2C2FF; // blue-white
+$color-star-a: #FFFFFF; // white
+$color-star-f: #FEF9D2; // yellow-white
+$color-star-g: #FDF4A5; // yellow
+$color-star-k: #FB965C; // orange
+$color-star-m: #FA3914; // red
+$color-star-l: #E65E2F; // red-brown
+$color-star-t: #D2844B; // brown
+$color-star-y: #8B4513; // dark brown
+$color-star-e: #33B259; // green

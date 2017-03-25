@@ -23,17 +23,17 @@
                     <tbody>
                         @foreach($starSystems as $starSystem)
                             <tr>
-                                <td>
+                                <td class="star-icon">
                                     @if($starSystem->black_hole)
-                                        <object type="image/svg+xml" data="{{ asset('img/star.svg') }}"
-                                                class="star star-{{ strtolower($starSystem->color) }}"
-                                        >STAR
-                                        </object>
+                                        <svg class="star star-blackhole">
+                                            <title>Black hole system</title>
+                                            <use xlink:href="{{ asset('img/sprite.svg') }}#star"/>
+                                        </svg>
                                     @else
-                                        <img src="{{ asset('img/star.svg') }}"
-                                             alt="star icon"
-                                             class="star star-{{ strtolower($starSystem->color) }}"
-                                        />
+                                        <svg class="star star-{{ strtolower($starSystem->color) }}">
+                                            <title>Class {{ $starSystem->class }} star system</title>
+                                            <use xlink:href="{{ asset('img/sprite.svg') }}#star"/>
+                                        </svg>
                                     @endif
                                 </td>
                                 <td>

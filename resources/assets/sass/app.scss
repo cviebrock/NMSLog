@@ -65,42 +65,50 @@ h1, h2, h3, h4, h5, h6,
     letter-spacing: 0.05rem;
 }
 
-.star {
-    display: inline-block;
+td.star-icon {
+    vertical-align: middle !important;
+}
+
+svg.star {
+    display: block;
     width: 32px;
     height: 32px;
 
-    &.star-o svg {
-        fill: $color-star-o !important;
+    &.star-blackhole {
+        fill: #000;
     }
-    &.star-b svg {
+
+    &.star-o {
+        fill: $color-star-o;
+    }
+    &.star-b {
         fill: $color-star-b;
     }
-    &.star-a svg {
+    &.star-a {
         fill: $color-star-a;
     }
-    &.star-f svg {
+    &.star-f {
         fill: $color-star-f;
     }
-    &.star-g svg {
+    &.star-g {
         fill: $color-star-g;
     }
-    &.star-k svg {
+    &.star-k {
         fill: $color-star-k;
     }
-    &.star-m svg {
+    &.star-m {
         fill: $color-star-m;
     }
-    &.star-l svg {
+    &.star-l {
         fill: $color-star-l;
     }
-    &.star-t svg {
+    &.star-t {
         fill: $color-star-t;
     }
-    &.star-y svg {
+    &.star-y {
         fill: $color-star-y;
     }
-    &.star-e svg {
+    &.star-e {
         fill: $color-star-e;
     }
 
