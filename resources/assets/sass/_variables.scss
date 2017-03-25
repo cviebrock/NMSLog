@@ -45,7 +45,7 @@ $input-border-focus: $input-color;
 $input-color-placeholder: lighten($input-bg, 25%);
 
 // Panels
-$panel-bg: #1a2933;
+$panel-bg: rgba($panel-default-border, .25); //#1a2933;
 $panel-default-heading-bg: $panel-default-border;
 
 // tables

@@ -4,7 +4,7 @@
         <table class="table table-condensed">
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th colspan="2">Name</th>
                     <th>Location</th>
                     <th>Discoverer</th>
                 </tr>
@@ -12,6 +12,19 @@
             <tbody>
                 @foreach($recentDiscoveries as $starSystem)
                     <tr>
+                        <td class="star-icon">
+                            @if($starSystem->black_hole)
+                                <svg class="star star-blackhole">
+                                    <title>Black hole system</title>
+                                    <use xlink:href="{{ asset('img/sprite.svg') }}#star"/>
+                                </svg>
+                            @else
+                                <svg class="star star-{{ strtolower($starSystem->color) }}">
+                                    <title>Class {{ $starSystem->class }} star system</title>
+                                    <use xlink:href="{{ asset('img/sprite.svg') }}#star"/>
+                                </svg>
+                            @endif
+                        </td>
                         <td>
                             <a href="#">{{ $starSystem->name }}</a>
                             @if($starSystem->description)
