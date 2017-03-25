@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\StarSystem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 
 class MeController extends Controller
@@ -32,6 +33,8 @@ class MeController extends Controller
             ->limit(10)
             ->get();
 
-        return view('me', compact('user', 'recentDiscoveries'));
+        $sprite = File::get(resource_path('assets/img/sprite.svg'));
+
+        return view('me', compact('user', 'recentDiscoveries', 'sprite'));
     }
 }

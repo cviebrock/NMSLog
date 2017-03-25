@@ -27,7 +27,7 @@
                                     @if($starSystem->black_hole)
                                         <svg class="star star-blackhole">
                                             <title>Black hole system</title>
-                                            <use xlink:href="{{ asset('img/sprite.svg') }}#star"/>
+                                            <use xlink:href="{{ asset('img/sprite.svg') }}#blackhole"/>
                                         </svg>
                                     @else
                                         <svg class="star star-{{ strtolower($starSystem->color) }}">

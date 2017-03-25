@@ -76,7 +76,7 @@ svg.star {
     height: 32px;
 
     &.star-blackhole {
-        fill: #000;
+        fill: $color-star-blackhole;
     }
 
     &.star-o {
