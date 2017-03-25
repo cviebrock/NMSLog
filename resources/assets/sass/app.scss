@@ -1,0 +1,107 @@
+// Fonts
+//@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+@font-face {
+    font-family: 'GeoNMS';
+    src: url('../fonts/geonms-webfont.ttf') format('truetype');
+}
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+#app {
+    position: relative;
+}
+
+.text-muted,
+th {
+    font-weight: 300;
+}
+
+.welcome-page {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    h1 {
+        font-size: 90px;
+    }
+}
+
+h1, h2, h3, h4, h5, h6,
+.navbar-brand,
+.panel-heading {
+    font-family: $font-family-headlines;
+    letter-spacing: 1px;
+}
+
+.panel-heading {
+    text-transform: uppercase;
+}
+
+.alert.alert-status {
+    z-index: $zindex-modal;
+    border-width: 0 0 1px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    animation: disappears 1s ease 5s 1 normal forwards;
+}
+
+.form-group.required label:after {
+    content: "REQUIRED";
+    margin-left: 1rem;
+    color: rgba($text-color, .5);
+    font-size: 60%;
+    letter-spacing: 0.05rem;
+}
+
+.star {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+
+    &.star-o svg {
+        fill: $color-star-o !important;
+    }
+    &.star-b svg {
+        fill: $color-star-b;
+    }
+    &.star-a svg {
+        fill: $color-star-a;
+    }
+    &.star-f svg {
+        fill: $color-star-f;
+    }
+    &.star-g svg {
+        fill: $color-star-g;
+    }
+    &.star-k svg {
+        fill: $color-star-k;
+    }
+    &.star-m svg {
+        fill: $color-star-m;
+    }
+    &.star-l svg {
+        fill: $color-star-l;
+    }
+    &.star-t svg {
+        fill: $color-star-t;
+    }
+    &.star-y svg {
+        fill: $color-star-y;
+    }
+    &.star-e svg {
+        fill: $color-star-e;
+    }
+
+}

@@ -1,0 +1,81 @@
+// Body
+$body-bg: #090e11;
+
+// Borders
+$laravel-border-color: lighten($body-bg, 10%);
+$list-group-border: $laravel-border-color;
+$navbar-default-border: $laravel-border-color;
+$panel-default-border: $laravel-border-color;
+$panel-inner-border: $laravel-border-color;
+
+// Brands
+$brand-primary: #3097D1;
+$brand-info: #8eb4cb;
+$brand-success: #2ab27b;
+$brand-warning: #cbb956;
+$brand-danger: #bf5329;
+
+// Typography
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+$font-family-sans-serif: "Lato", sans-serif;
+$font-family-headlines: "GeoNMS", sans-serif;
+$font-size-base: 16px;
+$line-height-base: 1.6;
+$text-color: #99b8cc;
+$text-muted: rgba($text-color, .75);
+
+$link-color: $brand-primary;
+$link-hover-color: lighten($link-color, 15%);
+
+
+// Navbar
+$navbar-default-bg: #335266;
+$navbar-default-color: #5588aa;
+$navbar-default-link-color: #77a0bb;
+$navbar-default-link-hover-color: lighten($navbar-default-link-color, 15%);
+
+// Buttons
+$btn-default-color: $text-color;
+
+// Inputs
+$input-bg: #2b4455;
+$input-color: #aac3d4;
+$input-border: lighten($input-bg, 20%);
+$input-border-focus: $input-color;
+$input-color-placeholder: lighten($input-bg, 25%);
+
+// Panels
+$panel-bg: #1a2933;
+$panel-default-heading-bg: $panel-default-border;
+
+// tables
+$table-bg-accent: (#fff, .1);
+$table-bg-hover: rgba($brand-info, .25);
+$table-border-color: rgba(#fff, .15);
+
+// Alerts
+$alert-border-radius: 0;
+
+// Animations
+@keyframes disappears {
+    from {
+        top: 0;
+        opacity: 1;
+    }
+    to {
+        top: -40px;
+        opacity: 0;
+    }
+}
+
+$color-star-o: blue;
+$color-star-b: 'blue-white';
+$color-star-a: 'white';
+$color-star-f: 'yellow-white';
+$color-star-g: 'yellow';
+$color-star-k: 'orange';
+$color-star-m: 'red';
+$color-star-l: 'red-brown';
+$color-star-t: 'brown';
+$color-star-y: 'dark-brown';
+$color-star-e: 'green';
