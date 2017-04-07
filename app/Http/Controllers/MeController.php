@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\StarSystem;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
 
 
 class MeController extends Controller
@@ -33,24 +32,43 @@ class MeController extends Controller
             ->limit(10)
             ->get();
 
-        $sprite = File::get(resource_path('assets/img/sprite.svg'));
-
-        return view('me', compact('user', 'recentDiscoveries', 'sprite'));
+        return view('me', compact('user', 'recentDiscoveries'));
     }
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function map(Request $request)
     {
         $user = $request->user();
+        $tz = $user->timezone;
 
-        $starSystems  = StarSystem::with(['discovered_by'])
+        $starSystems = StarSystem::with(['discovered_by'])
             ->orderBy('discovered_on', 'ASC')
             ->get();
 
         $path = $starSystems->where('discovered_by.user_id', $user->user_id);
 
-        dd($starSystems, $path);
+        $starSystems = $starSystems->map(
+            function(StarSystem $starSystem) use ($tz) {
+                return [
+                    'name'       => $starSystem->name,
+                    'discoverer' => $starSystem->discovered_by->username,
+                    'date'       => $starSystem->discoveredOnInTimezone($tz)->format('Y-m-d H:i'),
+                    'position'   => $starSystem->XYZArray,
+                    'color'      => $starSystem->color,
+                    'blackhole' => $starSystem->blackhole,
+                ];
+            }
+        );
+
+        $path = $path->map(
+            function(StarSystem $starSystem) {
+                return $starSystem->XYZArray;
+            }
+        );
 
         return view('map', compact('starSystems', 'path'));
-
     }
 }

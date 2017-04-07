@@ -20,3 +20,5 @@ Auth::routes();
 Route::get('/me', 'MeController@index')->name('me');
 
 Route::resource('/me/discoveries', 'DiscoveryController');
+
+Route::get('/me/map', 'MeController@map')->name('map');

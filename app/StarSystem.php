@@ -112,6 +112,19 @@ class StarSystem extends Model
     }
 
     /**
+     * @return array
+     */
+    public function getXYZArrayAttribute()
+    {
+        return [
+            $this->attributes['pos_x'],
+            $this->attributes['pos_y'],
+            $this->attributes['pos_z'],
+        ];
+    }
+
+
+    /**
      * @return string
      */
     public function getDescriptionAttribute()

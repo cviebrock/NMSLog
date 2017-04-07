@@ -78,7 +78,6 @@ svg.star {
     &.star-blackhole {
         fill: $color-star-blackhole;
     }
-
     &.star-o {
         fill: $color-star-o;
     }
@@ -113,4 +112,11 @@ svg.star {
         fill: $color-star-e;
     }
 
+}
+
+canvas {
+    display: block;
+}
+#map {
+    outline: 1px solid $laravel-border-color;
 }

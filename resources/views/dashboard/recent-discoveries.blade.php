@@ -13,17 +13,7 @@
                 @foreach($recentDiscoveries as $starSystem)
                     <tr>
                         <td class="star-icon">
-                            @if($starSystem->black_hole)
-                                <svg class="star star-blackhole">
-                                    <title>Black hole system</title>
-                                    <use xlink:href="#sprite-blackhole"/>
-                                </svg>
-                            @else
-                                <svg class="star star-{{ strtolower($starSystem->color) }}">
-                                    <title>Class {{ $starSystem->class }} star system</title>
-                                    <use xlink:href="#sprite-star"/>
-                                </svg>
-                            @endif
+                            @include('common.starsystem-sprite', ['starSystem' => $starSystem])
                         </td>
                         <td>
                             <a href="#">{{ $starSystem->name }}</a>
@@ -58,8 +48,4 @@
         </table>
 
     </div>
-</div>
-
-<div class="hidden">
-    {!! $sprite !!}
 </div>
