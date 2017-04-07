@@ -53,6 +53,7 @@ class StarSystem extends Model
      * @var array
      */
     public static $colors = [
+        'X' => 'unknown / none',
         'O' => 'blue',
         'B' => 'blue-white',
         'A' => 'white',
@@ -126,6 +127,34 @@ class StarSystem extends Model
 
         return $description;
     }
+
+    /**
+     * @return null|string
+     */
+    public function getColorAttribute()
+    {
+        if ($class = array_get($this->attributes, 'class')) {
+            $type = strtoupper(substr($class, 0, 1));
+
+            if ($type !== 'X' && array_key_exists($type, static::$colors)) {
+                return $type;
+            }
+        }
+
+        return null;
+    }
+
+    public function getBrightnessAttribute()
+    {
+        if ($class = array_get($this->attributes, 'class')) {
+            if (preg_match('/^[A-Z](\d+)/', $class, $matches)) {
+                return (int) $matches[1];
+            }
+        }
+
+        return 5;
+    }
+
 
     /**
      * @param string $timezone
