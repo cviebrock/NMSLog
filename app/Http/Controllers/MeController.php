@@ -37,4 +37,20 @@ class MeController extends Controller
 
         return view('me', compact('user', 'recentDiscoveries', 'sprite'));
     }
+
+    public function map(Request $request)
+    {
+        $user = $request->user();
+
+        $starSystems  = StarSystem::with(['discovered_by'])
+            ->orderBy('discovered_on', 'ASC')
+            ->get();
+
+        $path = $starSystems->where('discovered_by.user_id', $user->user_id);
+
+        dd($starSystems, $path);
+
+        return view('map', compact('starSystems', 'path'));
+
+    }
 }

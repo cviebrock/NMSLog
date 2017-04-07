@@ -13,6 +13,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    @yield('head')
+
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
