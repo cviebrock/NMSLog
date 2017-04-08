@@ -112,7 +112,7 @@
 
 
                     var starMaterial = new THREE.PointsMaterial({
-                        size:        20,
+                        size:        10,
                         map:         starTexture,
                         blending:    THREE.AdditiveBlending,
                         transparent: true

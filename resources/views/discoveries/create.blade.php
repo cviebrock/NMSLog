@@ -40,25 +40,6 @@
                         @endif
                     </div>
 
-                    <div class="form-group required{{ $errors->has('color') ? ' has-error' : '' }}">
-                        <label for="color">Star Color</label>
-                        <select id="color" class="form-control" name="color" required>
-                            <option>-</option>
-                            @foreach(\App\StarSystem::$colors as $color => $name)
-                                <option value="{{ $color }}"
-                                  {{ old('color')===$color ? 'selected' : '' }}
-                                >
-                                    {{ title_case($name) }}
-                                </option>
-                            @endforeach
-                        </select>
-                        @if ($errors->has('color'))
-                            <div class="help-block">
-                                {{ $errors->first('color') }}
-                            </div>
-                        @endif
-                    </div>
-
                     <div class="form-group required{{ $errors->has('coordinates') ? ' has-error' : '' }}">
                         <label for="coordinates">Coordinates</label>
                         <input id="coordinates" type="text" class="form-control" name="coordinates"

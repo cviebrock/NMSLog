@@ -4,6 +4,7 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 
 class StarSystem extends Model
@@ -26,7 +27,6 @@ class StarSystem extends Model
     protected $fillable = [
         'name',
         'class',
-        'color',
         'coordinates',
         'gc_distance',
         'planets',
@@ -70,7 +70,7 @@ class StarSystem extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function discovered_by()
+    public function discovered_by() :BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
@@ -89,10 +89,18 @@ class StarSystem extends Model
     }
 
     /**
+     * @param string $string
+     */
+    public function setClassAttribute(string $string)
+    {
+        $this->attributes['class'] = ucfirst(strtolower($string));
+    }
+
+    /**
      * @param string $value
      * @return array
      */
-    public static function parseCoordinates(string $value)
+    public static function parseCoordinates(string $value) :array
     {
         list(, $pos_x, $pos_y, $pos_z, $pos_w) = explode(':', $value);
 
@@ -106,7 +114,7 @@ class StarSystem extends Model
     /**
      * @return array
      */
-    public function getCoordinateArrayAttribute()
+    public function getCoordinateArrayAttribute() :array
     {
         return array_only($this->attributes, ['pos_x', 'pos_y', 'pos_z', 'pos_w']);
     }
@@ -114,7 +122,7 @@ class StarSystem extends Model
     /**
      * @return array
      */
-    public function getXYZArrayAttribute()
+    public function getXYZArrayAttribute() :array
     {
         return [
             $this->attributes['pos_x'],
@@ -122,7 +130,6 @@ class StarSystem extends Model
             $this->attributes['pos_z'],
         ];
     }
-
 
     /**
      * @return string
@@ -142,22 +149,19 @@ class StarSystem extends Model
     }
 
     /**
-     * @return null|string
+     * @return string
      */
     public function getColorAttribute()
     {
-        if ($class = array_get($this->attributes, 'class')) {
-            $type = strtoupper(substr($class, 0, 1));
+        $class = array_get($this->attributes, 'class', 'X');
 
-            if ($type !== 'X' && array_key_exists($type, static::$colors)) {
-                return $type;
-            }
-        }
-
-        return null;
+        return strtoupper(substr($class, 0, 1));
     }
 
-    public function getBrightnessAttribute()
+    /**
+     * @return int
+     */
+    public function getBrightnessAttribute() :int
     {
         if ($class = array_get($this->attributes, 'class')) {
             if (preg_match('/^[A-Z](\d+)/', $class, $matches)) {
@@ -168,12 +172,11 @@ class StarSystem extends Model
         return 5;
     }
 
-
     /**
      * @param string $timezone
      * @return mixed
      */
-    public function discoveredOnInTimezone(string $timezone)
+    public function discoveredOnInTimezone(string $timezone) :Carbon
     {
         /** @var Carbon $date */
         return $this->getAttribute('discovered_on')
@@ -198,7 +201,7 @@ class StarSystem extends Model
      * @return float
      * @throws \InvalidArgumentException
      */
-    public function distanceTo($other)
+    public function distanceTo($other) :float
     {
         if ($other instanceof StarSystem) {
             $o = $other->coordinateArray;
