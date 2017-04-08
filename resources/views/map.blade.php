@@ -55,7 +55,8 @@
                       dimension = element.getBoundingClientRect().width,
                       scene = new THREE.Scene(),
                       camera = new THREE.PerspectiveCamera(75, 1, 1, 0xffff),
-                      renderer = new THREE.WebGLRenderer({antialias: true});
+                      renderer = new THREE.WebGLRenderer({antialias: true}),
+                      clock = new THREE.Clock();
 
                     renderer.setPixelRatio(window.devicePixelRatio);
                     renderer.setSize(dimension, dimension);
@@ -86,41 +87,25 @@
                       starColors = [];
 
                     for (var i = 0; i < starSystems.length; i++) {
-                        var star = new THREE.Vector3(),
-                          starSystem = starSystems[i],
-                          color = starSystem.color || 'X',
-                          position = starSystem.position;
+                        var starSystem = starSystems[i],
+                          color = starSystemColors[starSystem.color],
+                          position = starSystem.position,
+                          brightness = starSystem.brightness,
+                          geometry = new THREE.SphereGeometry(1+brightness/10, 32, 32),
+                          material = new THREE.MeshBasicMaterial({
+                              color: color,
+                              reflectivity: 0,
+                              opacity: 0.5,
+                              transparent: true,
+                          });
+                        var sphere = new THREE.Mesh( geometry, material );
 
-                        star.x = position[0] - galacticCenterVector.x;
-                        star.y = position[1] - galacticCenterVector.y;
-                        star.z = position[2] - galacticCenterVector.z;
-                        starGeometry.vertices.push(star);
-                        starColors[i] = new THREE.Color(starSystemColors[color]);
+
+                        sphere.position.x = position[0] - galacticCenterVector.x;
+                        sphere.position.y = position[1] - galacticCenterVector.y;
+                        sphere.position.z = position[2] - galacticCenterVector.z;
+                        scene.add(sphere);
                     }
-
-                    starGeometry.colors = starColors;
-
-                    console.log(starGeometry.colors);
-                    //                    var starMaterial = new THREE.PointsMaterial({
-                    //                     */
-                    //                        size:         20,
-                    ////                        map:          sprite,
-                    //                        vertexColors: THREE.VertexColors,
-                    ////                        alphaTest:    0.5,
-                    ////                        transparent:  true
-                    //                    });
-
-
-                    var starMaterial = new THREE.PointsMaterial({
-                        size:        10,
-                        map:         starTexture,
-                        blending:    THREE.AdditiveBlending,
-                        transparent: true
-                    });
-
-                    starParticles = new THREE.Points(starGeometry, starMaterial);
-                    scene.add(starParticles);
-
 
                     // position camera
                     camera.position.y = 0x0fff;

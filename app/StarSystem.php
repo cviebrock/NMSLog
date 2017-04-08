@@ -153,9 +153,9 @@ class StarSystem extends Model
      */
     public function getColorAttribute()
     {
-        $class = array_get($this->attributes, 'class', 'X');
+        $class = strtoupper(substr(array_get($this->attributes, 'class', 'X'), 0, 1));
 
-        return strtoupper(substr($class, 0, 1));
+        return array_key_exists($class, static::$colors) ? $class : 'X';
     }
 
     /**

@@ -58,7 +58,8 @@ class MeController extends Controller
                     'date'       => $starSystem->discoveredOnInTimezone($tz)->format('Y-m-d H:i'),
                     'position'   => $starSystem->XYZArray,
                     'color'      => $starSystem->color,
-                    'blackhole' => $starSystem->blackhole,
+                    'brightness' => $starSystem->brightness,
+                    'blackhole'  => $starSystem->blackhole,
                 ];
             }
         );
