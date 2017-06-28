@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\StarSystem;
 use Illuminate\Foundation\Http\FormRequest;
 
 
@@ -29,7 +28,6 @@ class CreateStarSystemRequest extends FormRequest
         return [
             'name'          => 'required',
             'class'         => 'required',
-            'color'         => 'required|in:' . implode(',', array_keys(StarSystem::$colors)),
             'coordinates'   => [
                 'required',
                 'unique:star_systems',
@@ -57,17 +55,4 @@ class CreateStarSystemRequest extends FormRequest
             'coordinates.regex' => 'The coordinates must be in the format ALPHA:0000:0000:0000:0000',
         ];
     }
-
-    /**
-     * Get custom attributes for validator errors.
-     *
-     * @return array
-     */
-    public function attributes()
-    {
-        return [
-            'gc_distance' => 'distance to galactic center',
-        ];
-    }
-
 }
