@@ -95,6 +95,11 @@
                 {{ session('status') }}
             </div>
         @endif
+        @if (session('errors'))
+            <div class="alert alert-errors alert-status">
+                {{ session('errors') }}
+            </div>
+        @endif
     </div>
 
     <!-- Scripts -->
