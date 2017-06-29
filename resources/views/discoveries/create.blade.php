@@ -30,7 +30,7 @@
                         <label for="class">Star Class</label>
                         <input id="class" type="text" class="form-control" name="class"
                                value="{{ old('class') }}"
-                               placeholder="e.g. F0p"
+                               placeholder="e.g. F0p; X if black hole or unknown"
                                required
                         />
                         @if ($errors->has('class'))
