@@ -32,6 +32,7 @@ class StarSystem extends Model
         'planets',
         'moons',
         'black_hole',
+        'atlas_interface',
         'notes',
         'user_id',
         'discovered_on',
@@ -77,6 +78,7 @@ class StarSystem extends Model
 
     /**
      * @param string $value
+     *
      * @throws \Illuminate\Database\Eloquent\MassAssignmentException
      */
     public function setCoordinatesAttribute(string $value)
@@ -98,6 +100,7 @@ class StarSystem extends Model
 
     /**
      * @param string $value
+     *
      * @return array
      */
     public static function parseCoordinates(string $value) :array
@@ -134,15 +137,21 @@ class StarSystem extends Model
     /**
      * @return string
      */
-    public function getDescriptionAttribute()
+    public function getDescriptionAttribute() :string
     {
-        $description = $this->black_hole ? 'Black hole' : $this->class;
-
-        if ($this->planets) {
-            $description .= ' // ' . $this->planets . ' ' . str_plural('planet', $this->planets);
+        if ($this->atlas_interface) {
+            $description = 'Atlas Interface';
+        } else if ($this->black_hole) {
+            $description = 'Black hole';
+        } else {
+            $description = $this->class;
         }
-        if ($this->moons) {
-            $description .= ' // ' . $this->moons . ' ' . str_plural('moon', $this->moons);
+
+        if ($planets = $this->planets) {
+            $description .= ' // ' . $planets . ' ' . str_plural('planet', $planets);
+        }
+        if ($moons = $this->moons) {
+            $description .= ' // ' . $moons . ' ' . str_plural('moon', $moons);
         }
 
         return $description;
@@ -174,6 +183,7 @@ class StarSystem extends Model
 
     /**
      * @param string $timezone
+     *
      * @return mixed
      */
     public function discoveredOnInTimezone(string $timezone) :Carbon
@@ -198,6 +208,7 @@ class StarSystem extends Model
 
     /**
      * @param string|\App\StarSystem $other
+     *
      * @return float
      * @throws \InvalidArgumentException
      */

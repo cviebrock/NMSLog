@@ -26,18 +26,19 @@ class CreateStarSystemRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'          => 'required',
-            'class'         => 'required',
-            'coordinates'   => [
+            'name'            => 'required',
+            'class'           => 'required',
+            'coordinates'     => [
                 'required',
                 'unique:star_systems',
                 'regex:/^[a-z]{3,}(:[0-9a-f]{4}){4}/i',
             ],
-            'planets'       => 'nullable|integer|min:0',
-            'moons'         => 'nullable|integer|min:0',
-            'black_hole'    => 'boolean',
-            'notes'         => '',
-            'discovered_on' => [
+            'planets'         => 'nullable|integer|min:0',
+            'moons'           => 'nullable|integer|min:0',
+            'black_hole'      => 'boolean',
+            'atlas_interface' => 'boolean',
+            'notes'           => '',
+            'discovered_on'   => [
                 'required',
                 'date_format:Y-m-d H:i',
             ],

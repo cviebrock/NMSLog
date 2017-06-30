@@ -30,7 +30,7 @@
                         <label for="class">Star Class</label>
                         <input id="class" type="text" class="form-control" name="class"
                                value="{{ old('class') }}"
-                               placeholder="e.g. F0p; X if black hole or unknown"
+                               placeholder="e.g. F0p; X if black hole/atlas/unknown"
                                required
                         />
                         @if ($errors->has('class'))
@@ -96,6 +96,29 @@
                         @if ($errors->has('black_hole'))
                             <div class="help-block">
                                 {{ $errors->first('black_hole') }}
+                            </div>
+                        @endif
+                    </div>
+
+                    <div class="form-group{{ $errors->has('atlas_interface') ? ' has-error' : '' }}">
+                        <label>Atlas Interface?</label>
+                        <div>
+                            <label class="radio-inline">
+                                <input type="radio" name="atlas_interface" id="atlas_interface_0"
+                                       value="0"
+                                  {{ old('atlas_interface') ? '' : 'checked' }}
+                                /> No
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="atlas_interface" id="atlas_interface_1"
+                                       value="1"
+                                  {{ old('atlas_interface') ? 'checked' : '' }}
+                                /> Yes
+                            </label>
+                        </div>
+                        @if ($errors->has('atlas_interface'))
+                            <div class="help-block">
+                                {{ $errors->first('atlas_interface') }}
                             </div>
                         @endif
                     </div>

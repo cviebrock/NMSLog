@@ -53,9 +53,9 @@
   <symbol id="sprite-blackhole"
           viewBox="100 0 100 100">
     <circle cx="150"
-             cy="50"
-             r="50"
-             style="fill-opacity: 0.1;">
+            cy="50"
+            r="50"
+            style="fill-opacity: 0.1;">
       <animate attributeType="xml"
                attributeName="fill-opacity"
                values=".1;.05;.1"
@@ -113,6 +113,34 @@
                dur="10s"
                repeatCount="indefinite" />
     </circle>
+  </symbol>
+
+  <symbol id="star-atlas"
+          viewBox="200 0 100 100">
+    <defs>
+      <radialGradient id="gradient-0"
+                      gradientUnits="userSpaceOnUse"
+                      cx="49.074"
+                      cy="32.354"
+                      r="9"
+                      gradientTransform="matrix(1.197355, 0.019736, -0.01648, 0.999864, -9.290977, -0.982044)">
+        <stop offset="0"
+              style="stop-color: rgb(248, 135, 135);" />
+        <stop offset="1"
+              style="stop-color: rgb(164, 14, 14);" />
+      </radialGradient>
+    </defs>
+    <g>
+      <path d="M 250 5 L 280 35 L 220 35 L 250 5 Z"
+            style="fill: rgb(78, 78, 78); stroke: rgb(255, 255, 255);" />
+      <path d="M 250 95 L 220 35 L 280 35 L 250 95 Z"
+            style="fill: rgb(0, 0, 0); stroke: rgb(255, 255, 255);" />
+      <ellipse style="stroke: rgb(255, 255, 255); fill: url(#gradient-0);"
+               cx="250"
+               cy="35"
+               rx="9"
+               ry="9" />
+    </g>
   </symbol>
 
 </svg>
