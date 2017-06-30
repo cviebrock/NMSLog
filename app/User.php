@@ -46,7 +46,8 @@ class User extends Authenticatable
      */
     public function discoveredStarSystems()
     {
-        return $this->hasMany(StarSystem::class, 'user_id');
+        return $this->hasMany(StarSystem::class, 'user_id')
+            ->orderBy('discovered_on', 'desc');
     }
 
     /**
