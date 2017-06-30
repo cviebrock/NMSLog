@@ -115,7 +115,7 @@
     </circle>
   </symbol>
 
-  <symbol id="star-atlas"
+  <symbol id="sprite-atlas"
           viewBox="200 0 100 100">
     <defs>
       <radialGradient id="gradient-0"
