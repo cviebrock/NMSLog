@@ -57,7 +57,7 @@
                         <label for="planets">Number of Planets</label>
                         <input id="planets" type="number" class="form-control" name="planets"
                                min="0"
-                               value="{{ old('planets') }}"/>
+                               value="{{ old('planets') ?: 0 }}"/>
                         @if ($errors->has('planets'))
                             <div class="help-block">
                                 {{ $errors->first('planets') }}
@@ -69,7 +69,7 @@
                         <label for="moons">Number of Moons</label>
                         <input id="moons" type="number" class="form-control" name="moons"
                                min="0"
-                               value="{{ old('moons') }}"/>
+                               value="{{ old('moons') ?: 0 }}"/>
                         @if ($errors->has('moons'))
                             <div class="help-block">
                                 {{ $errors->first('moons') }}
