@@ -23,7 +23,7 @@
             T: 0xD2844B, // brown
             Y: 0x8B4513, // dark brown
             E: 0x33B259, // green
-            X: 0x999999, // ?
+            X: 0x999999  // ?
         };
     </script>
 @endsection
@@ -68,7 +68,7 @@
                     var colors = {
                         gridLight:  0x99bbcc,
                         gridMedium: 0x6b828e,
-                        gridDark:   0x3d4a51,
+                        gridDark:   0x3d4a51
                     };
 
                     var galacticCenterArray = [0x07ff, 0x007f, 0x07ff],
@@ -96,7 +96,7 @@
                               color: color,
                               reflectivity: 0,
                               opacity: 0.5,
-                              transparent: true,
+                              transparent: true
                           });
                         var sphere = new THREE.Mesh( geometry, material );
 
